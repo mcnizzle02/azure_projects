@@ -54,3 +54,37 @@ az network nsg rule create `
     --access allow `
     --direction inbound `
     --source-address-prefixes "*"
+
+az network nsg create `
+    --resource-group $env:RESOURCE_GROUP `
+    --name "nsg-$($env:BACKEND_SUBNET_NAME)" `
+    --location $env:LOCATION `
+    --tags purpose=recipe environment=demo tier=backend
+
+az network nsg rule create `
+    --resource-group $env:RESOURCE_GROUP `
+    --nsg-name "nsg-$($env:BACKEND_SUBNET_NAME)" `
+    --name "Allow-From-Frontend" `
+    --protocol tcp `
+    --priority 1000 `
+    --destination-port-ranges 8080 `
+    --access allow `
+    --direction inbound `
+    --source-address-prefixes "10.0.1.0/24"
+
+az network nsg create `
+    --resource-group $env:RESOURCE_GROUP `
+    --name "nsg-$($env:DATABASE_SUBNET_NAME)" `
+    --location $env:LOCATION `
+    --tags purpose=recipe environment=demo tier=database
+
+az network nsg rule create `
+    --resource-group $env:RESOURCE_GROUP `
+    --nsg-name "nsg-$($env:DATABASE_SUBNET_NAME)" `
+    --name "Allow-Database-From-Backend" `
+    --protocol tcp `
+    --priority 1000 `
+    --destination-port-ranges 5432 `
+    --access allow `
+    --direction inbound `
+    --source-address-prefixes "10.0.2.0/24"
