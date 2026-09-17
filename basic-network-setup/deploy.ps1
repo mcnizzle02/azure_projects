@@ -1,3 +1,10 @@
+#Variables
+#$env:RESOURCE_GROUP = rg-basic-network-52f1e6
+#$env:VNET_NAME = vnet-basic-network-52f1e6
+#$env:FRONTEND_SUBNET_NAME = subnet-frontend
+#$env:BACKEND_SUBNET_NAME = subnet-backend
+#$env:DATABASE_SUBNET_NAME = subnet-database
+
 $env:LOCATION = "eastus"
 $env:SUBSCRIPTION_ID = az account show --query id --output tsv
 
