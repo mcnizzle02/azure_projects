@@ -88,3 +88,21 @@ az network nsg rule create `
     --access allow `
     --direction inbound `
     --source-address-prefixes "10.0.2.0/24"
+
+az network vnet subnet update `
+    --resource-group $env:RESOURCE_GROUP `
+    --vnet-name $env:VNET_NAME `
+    --name $env:FRONTEND_SUBNET_NAME `
+    --network-security-group "nsg-$($env:FRONTEND_SUBNET_NAME)"
+
+az network vnet subnet update `
+    --resource-group $env:RESOURCE_GROUP `
+    --vnet-name $env:VNET_NAME `
+    --name $env:BACKEND_SUBNET_NAME `
+    --network-security-group "nsg-$($env:BACKEND_SUBNET_NAME)"
+
+az network vnet subnet update `
+    --resource-group $env:RESOURCE_GROUP `
+    --vnet-name $env:VNET_NAME `
+    --name $env:DATABASE_SUBNET_NAME `
+    --network-security-group "nsg-$($env:DATABASE_SUBNET_NAME)"
