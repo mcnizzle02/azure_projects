@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    paths:
+      - 'knowledge-base/**'
+      - '.github/workflows/azure-static-web-apps-blue-grass-039624310.yml'
 
 jobs:
   build_and_deploy_job:
@@ -56,3 +55,5 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           action: "close"
+          app_location: "./knowledge-base/src"
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_GRASS_039624310 }}
