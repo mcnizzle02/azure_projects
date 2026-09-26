@@ -1,0 +1,14 @@
+{
+  "routes": [
+    { "route": "/.auth/login/aad", "statusCode": 404 },
+    { "route": "/unauthorized.html", "allowedRoles": ["anonymous"] },
+    { "route": "/*", "allowedRoles": ["reader", "contributor", "admin"] }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/github?post_login_redirect_uri=/",
+      "statusCode": 302
+    },
+    "403": { "rewrite": "/unauthorized.html" }
+  }
+}
