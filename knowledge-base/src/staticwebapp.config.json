@@ -2,6 +2,11 @@
   "platform": {
   "apiRuntime": "python:3.11"
 },
+"globalHeaders": {
+  "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin"
+},
   "routes": [
     { "route": "/.auth/login/aad", "statusCode": 404 },
     { "route": "/unauthorized.html", "allowedRoles": ["anonymous"] },

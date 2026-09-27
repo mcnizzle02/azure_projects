@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cloud Knowledge Base</title>
+  <title>Article · Cloud Knowledge Base</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -12,10 +12,16 @@
     <nav><a href="/.auth/logout">Sign out</a></nav>
   </header>
   <main>
-    <h1>Articles</h1>
     <p id="status">Loading…</p>
-    <ul id="article-list" class="article-list"></ul>
+    <article id="article" hidden>
+      <h1 id="title"></h1>
+      <p id="meta" class="meta"></p>
+      <div id="body" class="article-body"></div>
+    </article>
+    <p><a href="/">← All articles</a></p>
   </main>
-  <script src="/js/list.js"></script>
+  <script src="/vendor/marked.min.js"></script>
+  <script src="/vendor/purify.min.js"></script>
+  <script src="/js/article.js"></script>
 </body>
 </html>
