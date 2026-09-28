@@ -19,7 +19,7 @@ async function loadArticle() {
     document.title = `${article.title} · Cloud Knowledge Base`;
     document.getElementById('title').textContent = article.title;
 
-    const date = new Date(article.updatedAt).toLocaleDateString();
+    const date = new Date(article.updatedAt).toLocaleDateString(undefined, { timeZone: 'UTC' });
     const tags = article.tags.length ? ` · ${article.tags.join(', ')}` : '';
     document.getElementById('meta').textContent =
       `${article.author} · Updated ${date}${tags}`;

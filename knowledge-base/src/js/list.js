@@ -22,7 +22,7 @@ async function loadArticles() {
 
       const meta = document.createElement('p');
       meta.className = 'meta';
-      const date = new Date(article.updatedAt).toLocaleDateString();
+      const date = new Date(article.updatedAt).toLocaleDateString(undefined, { timeZone: 'UTC' });
       const tags = article.tags.length ? ` · ${article.tags.join(', ')}` : '';
       meta.textContent = `${article.author} · ${date}${tags}`;
 
